@@ -2,6 +2,7 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';                             
 import { ConfigService } from '@nestjs/config';
 import * as dotenv from 'dotenv';
+dotenv.config();
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -12,7 +13,7 @@ async function bootstrap() {
   });
   const configService = app.get(ConfigService);
 
-  const port = configService.get<number>('PORT') || Number(process.env.PORT) || 4000;
+  const port = Number(process.env.PORT) || 4000;
   const nodeEnv = configService.get<string>('NODE_ENV') || 'development';
   const mongoUri = configService.get<string>('MONGO_URI') || 'mongodb://localhost:27017/user_db';
 
