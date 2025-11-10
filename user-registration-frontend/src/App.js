@@ -1,6 +1,4 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import * as dotenv from 'dotenv';
-dotenv.config();
 
 // Get base URL from environment (Vercel injected) or fallback to local
 const getBaseUrl = () => {
