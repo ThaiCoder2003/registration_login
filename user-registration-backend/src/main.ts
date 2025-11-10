@@ -9,7 +9,7 @@ const allowedOrigin = process.env.FRONTEND_URL;
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
     app.enableCors({
-    origin: allowedOrigin,// your React app
+    origin: 'https://registration-login-iota.vercel.app',// your React app
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
     credentials: true,
   });
