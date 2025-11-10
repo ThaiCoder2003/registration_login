@@ -1,12 +1,13 @@
 import React, { useState, useEffect, useCallback } from 'react';
+import * as dotenv from 'dotenv';
+dotenv.config();
 
 // Get base URL from environment (Vercel injected) or fallback to local
 const getBaseUrl = () => {
   const localApi = 'http://localhost:4000/authentication';
-  const envApiUrl = import.meta.env?.API_URL;
+  const envApiUrl = process.env.REACT_APP_API_URL;
   return envApiUrl?.trim() || localApi;
 };
-
 // Base URL for the NestJS API (excluding the /authentication endpoint path)
 const API_BASE_URL = `${getBaseUrl()}`;
 const TOKEN_KEY = 'authToken';
