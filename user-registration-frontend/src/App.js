@@ -4,7 +4,6 @@ import React, { useState, useEffect, useCallback } from 'react';
 const getBaseUrl = () => {
   const localApi = 'http://localhost:4000/authentication';
   const envApiUrl = import.meta.env?.API_URL;
-  const env = import.meta.env?.NODE_ENV || 'development';
   return envApiUrl?.trim() || localApi;
 };
 
@@ -224,7 +223,7 @@ const App = () => {
       if (isAuthenticated) {
         fetchProfile();
       }
-    }, [isAuthenticated]); // Rerun when authenticated state changes
+    }, []); // Rerun when authenticated state changes
 
     if (isLoading) return <p className="text-center text-indigo-600">Loading Profile...</p>;
     if (!profileData) return <p className="text-center text-red-500">Could not retrieve profile. Log out and try again.</p>;
