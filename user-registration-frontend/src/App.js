@@ -3,8 +3,8 @@ import React, { useState, useEffect, useCallback } from 'react';
 // Get base URL from environment (Vercel injected) or fallback to local
 const getBaseUrl = () => {
   const localApi = 'http://localhost:4000/authentication';
-  const envApiUrl = process.env.REACT_APP_API_URL;
-  return envApiUrl?.trim() || localApi;
+  const envApiUrl = process.env.REACT_APP_API_URL || process.env.API_URL;
+  return envApiUrl.trim();
 };
 // Base URL for the NestJS API (excluding the /authentication endpoint path)
 const API_BASE_URL = `${getBaseUrl()}`;
