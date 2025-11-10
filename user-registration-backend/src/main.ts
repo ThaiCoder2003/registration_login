@@ -4,10 +4,12 @@ import { ConfigService } from '@nestjs/config';
 import * as dotenv from 'dotenv';
 dotenv.config();
 
+const allowedOrigin = process.env.FRONTEND_URL;
+
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
     app.enableCors({
-    origin: process.env.FRONTEND_URL || '*',// your React app
+    origin: allowedOrigin,// your React app
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
     credentials: true,
   });
