@@ -18,6 +18,11 @@ export class AuthenticationController {
         return this.authService.loginUser(loginData);
     }
 
+    @Post('refresh')
+    async refresh(@Body() { refreshToken }: { refreshToken: string }): Promise<any> {
+        return this.authService.refreshToken(refreshToken);
+    }
+
     @UseGuards(JwtAuthGuard)
     @Get('profile')
     getProfile(@Request() req) {
@@ -31,4 +36,6 @@ export class AuthenticationController {
             },
         };
     }
+
+
 }
